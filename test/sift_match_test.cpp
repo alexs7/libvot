@@ -15,7 +15,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/features2d/features2d.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include "opencv2/nonfree/features2d.hpp"
+#include "opencv2/features2d.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #endif
 
@@ -62,8 +62,8 @@ int main(int argc, char **argv)
 	cv::Mat img_1, img_2;
 	if(is_image_exist)
 	{
-		img_1 = cv::imread(sift_imagefile1, CV_LOAD_IMAGE_COLOR);
-		img_2 = cv::imread(sift_imagefile2, CV_LOAD_IMAGE_COLOR);
+		img_1 = cv::imread(sift_imagefile1, cv::IMREAD_COLOR);
+		img_2 = cv::imread(sift_imagefile2, cv::IMREAD_COLOR);
 	}
 	if(FLAGS_opencv_feature)	// generate opencv sift feature from images
 	{

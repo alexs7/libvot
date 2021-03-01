@@ -1,6 +1,6 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <opencv2/nonfree/features2d.hpp>
+#include <opencv2/features2d.hpp>
 #include <iostream>
 
 #include "libvot_config.h"
@@ -27,7 +27,7 @@ int main( int argc, char** argv )
 	const std::string image_filename = std::string(argv[1]);
 	const std::string feat_filename = tw::IO::SplitPathExt(image_filename).first + ".sift";
 	// load the image in BGR format
-	const cv::Mat input = cv::imread(image_filename, CV_LOAD_IMAGE_COLOR);
+	const cv::Mat input = cv::imread(image_filename, cv::IMREAD_COLOR);
 
 	cv::SiftDescriptorExtractor cv_sift_detector;
 	std::vector<cv::KeyPoint> cv_keypoints;
