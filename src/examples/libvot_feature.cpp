@@ -222,15 +222,15 @@ int main(int argc, char** argv)
 		{
 			if (FLAGS_thread_num == 1) {
 				LOG(INFO) << "[Extract Feature] Compute SIFT features using opencv sift\n";
-				cv::SiftDescriptorExtractor cv_sift_detector;
+                cv::Ptr<cv::SiftDescriptorExtractor> cv_sift_detector = cv::SiftDescriptorExtractor::create();
 				for (int i = 0; i < num_images; i++) {
 					// load the image in BGR format
 					const cv::Mat input = cv::imread(image_filenames[i], cv::IMREAD_COLOR);
 
 					std::vector<cv::KeyPoint> cv_keypoints;
 					cv::Mat sift_descriptors;
-					cv_sift_detector.detect(input, cv_keypoints);
-					cv_sift_detector.compute(input, cv_keypoints, sift_descriptors);
+					cv_sift_detector->detect(input, cv_keypoints);
+					cv_sift_detector->compute(input, cv_keypoints, sift_descriptors);
 
 					vot::SiftData sift_data;
 					vot::OpencvKeyPoints2libvotSift(cv_keypoints, sift_descriptors, sift_data);
