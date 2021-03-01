@@ -52,5 +52,9 @@ src/libvot_config.h
 # ignore files in test_data unless specified.
 test_data/*
 
-# vscode
+# ide
 .vscode
+.idea
+
+# build stuff
+cmake-build-debug
