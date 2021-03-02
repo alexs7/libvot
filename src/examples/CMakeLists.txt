@@ -8,6 +8,13 @@ set_property(TARGET image_search PROPERTY CXX_STANDARD_REQUIRED on)
 target_link_libraries(image_search ${CMAKE_THREAD_LIBS_INIT} vot_vocabtree vot_utils ${GFLAGS_LIBRARIES})
 install (TARGETS image_search DESTINATION bin CONFIGURATIONS Release)
 
+# compile options for build_vocabtree tree example (need c++11)
+add_executable(build_vocabtree build_vocabtree.cpp)
+set_property(TARGET build_vocabtree PROPERTY CXX_STANDARD 11)
+set_property(TARGET build_vocabtree PROPERTY CXX_STANDARD_REQUIRED on)
+target_link_libraries(build_vocabtree ${CMAKE_THREAD_LIBS_INIT} vot_vocabtree vot_utils ${GFLAGS_LIBRARIES})
+install (TARGETS build_vocabtree DESTINATION bin CONFIGURATIONS Release)
+
 # graph_partition
 add_executable(graph_partition graph_partition.cpp ../graph/image_graph.cpp)
 set_property(TARGET graph_partition PROPERTY CXX_STANDARD 11)
