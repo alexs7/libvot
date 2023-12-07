@@ -130,22 +130,22 @@ bool SiftMatcherOpencv::ShowMatches(std::string imagefile1,
 		return false;
 
 	// read image error
-	img_[0] = cv::imread(imagefile1, cv::IMREAD_COLOR);
-	img_[1] = cv::imread(imagefile2, cv::IMREAD_COLOR);
-	if (img_[0].empty() || img_[1].empty())
-		return false;
+	// img_[0] = cv::imread(imagefile1, cv::IMREAD_COLOR);
+	// img_[1] = cv::imread(imagefile2, cv::IMREAD_COLOR);
+	// if (img_[0].empty() || img_[1].empty())
+	// 	return false;
 
 	// Draw only "good" matches
-	cv::Mat img_matches;
-	cv::drawMatches(img_[0], keypoints_[0], img_[1], keypoints_[1],
-	                good_matches_, img_matches, cv::Scalar::all(-1), cv::Scalar::all(-1),
-	                std::vector<char>(), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+	// cv::Mat img_matches;
+	// cv::drawMatches(img_[0], keypoints_[0], img_[1], keypoints_[1],
+	//                 good_matches_, img_matches, cv::Scalar::all(-1), cv::Scalar::all(-1),
+	//                 std::vector<char>(), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
 	// Show detected matches
-	cv::namedWindow("Good Matches", cv::WINDOW_NORMAL);
-	cv::resize(img_matches, img_matches, cv::Size(), 0.25, 0.25);
-	cv::imshow("Good Matches", img_matches);
-	cv::waitKey(0);
+	// cv::namedWindow("Good Matches", cv::WINDOW_NORMAL);
+	// cv::resize(img_matches, img_matches, cv::Size(), 0.25, 0.25);
+	// cv::imshow("Good Matches", img_matches);
+	// cv::waitKey(0);
 	return true;
 }
 
