@@ -615,6 +615,8 @@ void MultiAddImage(TreeNode *root,
 
 double VocabTree::AddImage2Tree(size_t image_index, SiftData &sift, int thread_num)
 {
+	//print num_leaves
+	printf("num_leaves: %zu\n", num_leaves);
 	float *q = new float [num_leaves];
 	for (size_t i = 0; i < num_leaves; i++) {
 		q[i] = 0.0;
