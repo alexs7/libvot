@@ -55,6 +55,11 @@ inline float l2sq(const DTYPE *a, const DTYPE *b)
 
 	MapTypeConst a_map(a, FDIM);
 	MapTypeConst b_map(b, FDIM);
+
+	//print a_map
+	cout << a_map << endl;
+	cout << b_map << endl;
+
 	return (a_map.cast<float>() - b_map.cast<float>()).squaredNorm();
 }
 
@@ -618,6 +623,9 @@ double VocabTree::AddImage2Tree(size_t image_index, SiftData &sift, int thread_n
 	int sift_num = sift.getFeatureNum();
 	DTYPE *v = sift.getDesPointer();
 
+	//print thread_num
+	std::cout << "thread_num: " << thread_num << std::endl;
+
 	size_t off = 0;
 	if (thread_num == 1) {    	// single-thread version
 		for (int i = 0; i < sift_num; i++) {
@@ -660,15 +668,18 @@ size_t TreeInNode::DescendFeature(float *q, DTYPE *v, size_t image_index, int br
 	int best_idx = 0;
 	float min_distance = std::numeric_limits<float>::max();
 	for (int i = 0; i < branch_num; i++) {
-		if (children[i] != nullptr) {
+		if (children[i] != nullptr) {			
+
 			float curr_dist = l2sq(v, children[i]->des);
+			std::cout << "curr_dist: " << curr_dist << std::endl;
+			exit(0);
+
 			if (curr_dist < min_distance) {
 				min_distance = curr_dist;
 				best_idx = i;
 			}
 		}
 	}
-
 
 	size_t ret = children[best_idx]->DescendFeature(q, v, image_index, branch_num, dim, add);
 	return ret;
