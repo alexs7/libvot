@@ -220,6 +220,9 @@ namespace vot
 		if(vt.BuildTree(total_keys, FDIM, depth, branch_num, mem_pointer, thread_num))
 			vt.WriteTree(output_filename);
 
+		vt.Show();
+		exit(0);
+
 		vot::VocabTree vt1;
 		vt1.ReadTree(output_filename);
 		if (vt1.Compare(vt)) {
