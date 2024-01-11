@@ -34,6 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * This file contains the complete pipeline of vocabulary tree.
  */
+#include <cstdio>
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -123,6 +124,7 @@ namespace vot
 						int depth, int branch_num,
 						SiftType sift_type, int thread_num)
 	{
+		printf("Inside BuildVocabTree\n");
 		// read sift filenames, get the total number of sift keys, and allocate memory
 		std::vector<std::string> sift_filenames;
 		tw::IO::ExtractLines(sift_list, sift_filenames);
@@ -245,6 +247,7 @@ namespace vot
 							size_t start_id,
 							int thread_num)
 	{
+		printf("Inside BuildImageDatabase\n");
 		// read sift filenames, get the total number of sift keys, and allocate memory
 		std::vector<std::string> sift_filenames;
 		tw::IO::ExtractLines(sift_list, sift_filenames);
@@ -283,7 +286,9 @@ namespace vot
 			std::cout << "[BuildDB] Add image #" << start_id + i << " to database\n";
 		}
 		tree.ComputeTFIDFWeight(siftfile_num);
+		printf("start_id (before): %zu", start_id);
 		tree.NormalizeDatabase(start_id, siftfile_num);
+		printf("start_id (after): %zu", start_id);
 
 		std::cout << "[BuildDB] Write vocabulary tree (with image database) to " << output_filename << '\n';
 		tree.WriteTree(output_filename);

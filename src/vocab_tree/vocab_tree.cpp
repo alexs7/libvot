@@ -673,8 +673,6 @@ size_t TreeInNode::DescendFeature(float *q, DTYPE *v, size_t image_index, int br
 		if (children[i] != nullptr) {			
 
 			float curr_dist = l2sq(v, children[i]->des);
-			std::cout << "curr_dist: " << curr_dist << std::endl;
-			exit(0);
 
 			if (curr_dist < min_distance) {
 				min_distance = curr_dist;
