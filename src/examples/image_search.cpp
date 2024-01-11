@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 	int depth = 6;
 	int branch_num = 8;
 	vot::SiftType sift_type = vot::E3D_SIFT;
-	int thread_num = 1;
+	int thread_num = 4;
 	int start_id = 0;
 	int num_matches = 100;
 
