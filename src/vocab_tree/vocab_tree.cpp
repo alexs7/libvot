@@ -56,10 +56,6 @@ inline float l2sq(const DTYPE *a, const DTYPE *b)
 	MapTypeConst a_map(a, FDIM);
 	MapTypeConst b_map(b, FDIM);
 
-	//print a_map
-	cout << a_map << endl;
-	cout << b_map << endl;
-
 	return (a_map.cast<float>() - b_map.cast<float>()).squaredNorm();
 }
 
